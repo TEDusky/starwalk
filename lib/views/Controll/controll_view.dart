@@ -18,8 +18,15 @@ class _ControllScreenState extends State<ControllScreen> {
   @override
   void initState() {
     super.initState();
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      // UGLY HACK: in release mode, screen was initialized with height 168, making the scroll broken
+      Future.delayed(const Duration(milliseconds: 200), () {
+        if (_scrollController.hasClients) {
+          final max = _scrollController.position.maxScrollExtent;
+          _scrollController.jumpTo(max);
+        }
+      });
     });
   }
 

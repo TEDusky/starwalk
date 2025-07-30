@@ -10,7 +10,7 @@ class GradientScrollApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Scrollable Gradient Campsite',
-      home: const Scaffold(body: ControllScreen(),),
+      home: const Scaffold(body: ControllScreen()),
     );
   }
 }
